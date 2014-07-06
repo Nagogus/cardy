@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        min-width: 600px;
+        overflow-x: hidden;
+      }
+
+    </style>
+    <link rel="stylesheet" href="styles/vendor/foundation/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="styles/vendor/foundation/foundation.min.css" type="text/css" />
+    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+    <script src="js/vendor/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+
+  <div ng-controller="MainCtrl" ng-init="init()">
+
+    <div class="row" ng-if="cards.length">
+      <input type="text" ng-model="search.text" placeholder="Search...">
+    </div>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="row collapse">
+          <form>
+          <div class="small-4 columns">
+            <input type="text" placeholder="Word" ng-model="newCard.text">
+          </div>
+          <div class="small-6 columns">
+            <input type="text" placeholder="Description" ng-model="newCard.description">
+          </div>
+          <div class="small-2 columns">
+            <button type="submit" class="button postfix" ng-click="addCard(newCard)">Add</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <table class="results-table" ng-if="cards.length">
+        <thead>
+          <tr>
+            <th>Word</th>
+            <th>Description</th>
+            <th>Time</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="card in cards | filter: {'text': search.text} track by $index">
+            <td>{{card.text}}</td>
+            <td>{{card.description}}</td>
+            <td>{{card.date | date:'MM/dd/yyyy @ h:mma'}}</td>
+            <td><button ng-click="removeCard($index)">X</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p ng-if="!cards.length" class="text-center">No records yet.</p>
+    </div>
+  </div>
+
+  </body>
+</html>
+

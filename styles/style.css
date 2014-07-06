@@ -1,0 +1,12 @@
+body {
+
+}
+
+.table-wrapper {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.results-table {
+    width: 100%;
+}
