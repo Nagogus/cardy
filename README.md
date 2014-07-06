@@ -1,7 +1,7 @@
 Cardy
 =====
 
-Simple google chrome extension for learning basics.
+Simple google chrome extension for learning Chrome API usage.
 
 ### Usage:
 - Enable extension
